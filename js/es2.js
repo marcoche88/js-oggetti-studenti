@@ -9,9 +9,9 @@ di aggiungere un nuovo oggetto studente inserendo nell’ordine: nome, cognome e
 // ESERCIZIO 2
 /*
 1- creare array di oggetti studente
-2- stampare per ogni studente nome e cognome
-3- chiedere all'utente di inserire nome, cognome e età di un nuovo studente
-4- aggiungere il nuovo studente all'array
+2- chiedere all'utente di inserire nome, cognome e età di un nuovo studente
+3- aggiungere il nuovo studente all'array
+4- stampare per ogni studente nome e cognome
 */
 
 // creazione array di oggetti studente
@@ -35,29 +35,59 @@ var students = [
 
 console.table(students);
 
-// stampa per ogni studente dell'array nome e cognome
+// variabili
+var userName = document.getElementById("name");
+var userSurname = document.getElementById("surname");
+var userAge = document.getElementById("age");
 var arrayDisplay = document.getElementById("array-students");
-var studentsData = "";
+var button = document.getElementById("button-student");
 
-for (var i = 0; i < students.length; i++) {
-    var currentObject = students[i];
-    studentsData += currentObject.firstName + " " + currentObject.lastName + "<br>";
-}
+// prendere i dati del nuovo studente al click del bottone (BONUS)
+button.addEventListener("click", function () {
+    // crea nuovo oggetto studente e inserisce prende valori degli input
+    var newStudent = {};
+    var userNameValue = userName.value;
+    var userSurnameValue = userSurname.value;
+    var userAgeValue = userAge.value;
 
-arrayDisplay.innerHTML = studentsData;
+    // validazione input, se non valido resetta valori input e interrompe la funzione
+    if (!userNameValue || userNameValue.trim() === "" || !userSurnameValue || userSurnameValue.trim() === "") {
+        alert("Valori non validi");
+        userName.value = "";
+        userSurname.value = "";
+        userAge.value = "18";
+        return;
+    }
 
-// chiede all'utente di inserire i dati di un nuovo studente (nome cognome e età)
-var userName = prompt("Inserisci nome studente", "Maria");
-var userSurname = prompt("inserisci cognome studente", "Gialli");
-var userAge = parseInt(prompt("inserisci età studente", "43"));
+    // inserisci valori input nell'oggetto nuovo studente
+    newStudent.firstName = userNameValue;
+    newStudent.lastName = userSurnameValue;
+    newStudent.age = parseInt(userAgeValue);
 
-// crea nuovo oggetto studente
-var newStudent = {};
-newStudent.firstName = userName;
-newStudent.lastName = userSurname;
-newStudent.age = userAge;
+    // aggiunge nuovo oggetto studente all'array degli studenti
+    students.push(newStudent);
+    console.table(students);
 
-// aggiunge nuovo oggetto studente all'array degli studenti
-students.push(newStudent);
-console.table(students);
+    // stampa per ogni studente dell'array nome e cognome
+    var studentsData = "";
+
+    for (var i = 0; i < students.length; i++) {
+        var currentObject = students[i];
+        studentsData += currentObject.firstName + " " + currentObject.lastName + "<br>";
+    }
+
+    arrayDisplay.innerHTML = studentsData;
+
+    // resetta valori degli input
+    userName.value = "";
+    userSurname.value = "";
+    userAge.value = "18";
+})
+
+
+
+
+
+
+
 
