@@ -27,5 +27,5 @@ for (var key in student) {
     studentProperty += student[key] + " ";
 }
 
-objectDisplay.innerHTML = studentProperty;
+objectDisplay.innerHTML = studentProperty + "anni";
 
