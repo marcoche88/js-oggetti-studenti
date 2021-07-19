@@ -44,7 +44,7 @@ var button = document.getElementById("button-student");
 
 // prendere i dati del nuovo studente al click del bottone (BONUS)
 button.addEventListener("click", function () {
-    // crea nuovo oggetto studente e inserisce prende valori degli input
+    // creare nuovo oggetto studente e inserire valori degli input
     var newStudent = {};
     var userNameValue = userName.value;
     var userSurnameValue = userSurname.value;
@@ -59,16 +59,16 @@ button.addEventListener("click", function () {
         return;
     }
 
-    // inserisci valori input nell'oggetto nuovo studente
+    // inserire valori input nell'oggetto nuovo studente
     newStudent.firstName = userNameValue;
     newStudent.lastName = userSurnameValue;
     newStudent.age = parseInt(userAgeValue);
 
-    // aggiunge nuovo oggetto studente all'array degli studenti
+    // aggiungere nuovo oggetto studente all'array degli studenti
     students.push(newStudent);
     console.table(students);
 
-    // stampa per ogni studente dell'array nome e cognome
+    // stampare per ogni studente dell'array nome e cognome
     var studentsData = "";
 
     for (var i = 0; i < students.length; i++) {
@@ -78,7 +78,7 @@ button.addEventListener("click", function () {
 
     arrayDisplay.innerHTML = studentsData;
 
-    // resetta valori degli input
+    // resettare valori degli input
     userName.value = "";
     userSurname.value = "";
     userAge.value = "18";
